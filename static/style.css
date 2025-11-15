@@ -1,0 +1,4 @@
+/* Small tweaks for MNTR dev UI */
+body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+.card { border-radius: 0.6rem; }
+.container { max-width: 960px; }

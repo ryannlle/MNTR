@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title mb-3">Create an account</h2>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+              {% if form.username.errors %}
+                <div class="text-danger small">{{ form.username.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+              {% if form.email.errors %}
+                <div class="text-danger small">{{ form.email.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password1.label_tag }}
+              {{ form.password1 }}
+
+              {% if form.password_help_list %}
+                <ul class="mt-2 small">
+                  {% for line in form.password_help_list %}
+                    <li>{{ line }}</li>
+                  {% endfor %}
+                </ul>
+              {% elif form.password1.help_text %}
+                <p class="small">{{ form.password1.help_text|safe }}</p>
+              {% endif %}
+
+              {% if form.password1.errors %}
+                <div class="text-danger small">{{ form.password1.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password2.label_tag }}
+              {{ form.password2 }}
+              {% if form.password2.errors %}
+                <div class="text-danger small">{{ form.password2.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
