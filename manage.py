@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+
+#/Users/ryanle/MNTR/.venv/bin/python manage.py runserver 127.0.0.1:8000
+
 import os
 import sys
 
