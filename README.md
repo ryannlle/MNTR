@@ -29,6 +29,9 @@ Whether you’re a student seeking advice in your field of interest or a mentor 
 ⭐ Feedback and Ratings  
 📝 Students can provide feedback on sessions, helping improve the mentorship experience.
 
+👥 Study Groups
+🧑‍🤝‍🧑 Students can find and join study groups, helping other student with the same subject matter.
+
 ---
 
 ## 💡 Why MNTR?
