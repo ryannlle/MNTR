@@ -1,14 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="text-center">
-    <h1 class="display-5">Welcome to MNTR</h1>
-    <p class="lead">Find mentors, create study groups, and connect with classmates.</p>
-    {% if not user.is_authenticated %}
-      <a class="btn btn-primary" href="{% url 'register' %}">Get started</a>
-      <a class="btn btn-outline-primary" href="{% url 'login' %}">Log in</a>
-    {% else %}
-      <p>You're logged in as <strong>{{ user.username }}</strong>.</p>
-    {% endif %}
+  <div class="hero text-center p-5">
+    <div class="fade-in-up">
+      <h1 class="display-4 fw-bold">MNTR</h1>
+      <p class="lead mb-4">Find mentors, join top classes, and manage appointments.</p>
+
+      <form action="{% url 'search' %}" method="get" class="search-form d-flex justify-content-center align-items-center" role="search">
+        <div class="input-group input-group-lg search-bar shadow-sm" style="max-width:720px;">
+          <input name="q" type="search" class="form-control" placeholder="What do you need help with? (e.g., algebra, resume review)" aria-label="What do you need help with?">
+          <button class="btn btn-primary btn-lg" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-section mt-4">
+    <h3 class="mb-3">Explore</h3>
+    <div class="menu-grid">
+      <a class="menu-card" href="{% url 'top_classes' %}">
+        <div class="menu-title">Top classes</div>
+        <div class="menu-desc">Browse top classes (e.g., CS 150) and view top rated mentors</div>
+      </a>
+
+      <a class="menu-card" href="{% url 'top_mentors' %}">
+        <div class="menu-title">Top Mentors</div>
+        <div class="menu-desc">See the most helpful mentors across subjects</div>
+      </a>
+
+      <a class="menu-card" href="{% url 'leaderboard' %}">
+        <div class="menu-title">Leaderboard</div>
+        <div class="menu-desc">Track top contributors and study groups</div>
+      </a>
+
+      <a class="menu-card" href="{% url 'ratings' %}">
+        <div class="menu-title">Ratings</div>
+        <div class="menu-desc">View and manage ratings for mentors and classes</div>
+      </a>
+
+      <a class="menu-card" href="{% url 'appointments' %}">
+        <div class="menu-title">Appointments</div>
+        <div class="menu-desc">Manage upcoming bookings and schedule sessions</div>
+      </a>
+    </div>
   </div>
 {% endblock %}

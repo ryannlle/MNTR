@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="mt-4">
+    <h2>Top Mentors</h2>
+    <p class="text-muted">Find top mentors across all subjects.</p>
+    <div class="mentor-grid mt-3">
+      {% for mentor in mentors %}
+        <div class="mentor-card">
+          <div class="mentor-avatar">{{ mentor.user.username|slice:":1"|upper }}</div>
+          <div class="mentor-meta">
+            <div class="mentor-name">{{ mentor.user.username }}</div>
+            <div class="mentor-bio">{{ mentor.bio|default:"Example mentor bio." }}</div>
+          </div>
+          <div class="mentor-actions">
+            <a class="btn btn-outline-primary btn-sm" href="#">Message</a>
+            <a class="btn btn-primary btn-sm" href="#">Book</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
