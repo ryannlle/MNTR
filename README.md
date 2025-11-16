@@ -1,4 +1,11 @@
-MNTR is a platform designed to bridge the gap between students and mentors, making it easier for learners to find guidance and for experienced professionals to share their knowledge. Whether you’re a student seeking advice in your field of interest or a mentor looking to give back, Mntr streamlines the connection process.
+███╗   ███╗███╗   ██╗████████╗██████╗ 
+████╗ ████║████╗  ██║╚══██╔══╝██╔══██╗
+██╔████╔██║██╔██╗ ██║   ██║   ██████╔╝
+██║╚██╔╝██║██║╚██╗██║   ██║   ██╔══██╗
+██║ ╚═╝ ██║██║ ╚████║   ██║   ██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝
+                                      
+MNTR is a platform designed to bridge the gap between students and mentors, making it easier for learners to find guidance and for experienced professionals to share their knowledge. Whether you’re a student seeking advice in your field of interest or a mentor looking to give back, MNTR streamlines the connection process.
 
 Features
 
@@ -8,7 +15,7 @@ Features
 * Scheduling Tools: Allows users to arrange meetings and mentorship sessions easily.
 * Feedback and Ratings: Students can provide feedback on sessions, helping improve the mentorship experience.
 
-Why Mntr?
+Why MNTR?
 
 Mentorship is a powerful tool for personal and professional growth. Mntr makes mentoring accessible, efficient, and meaningful by connecting learners with the right guidance at the right time.
 
