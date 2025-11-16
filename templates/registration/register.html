@@ -17,6 +17,22 @@
             </div>
 
             <div class="mb-3">
+              {{ form.year.label_tag }}
+              {{ form.year }}
+              {% if form.year.errors %}
+                <div class="text-danger small">{{ form.year.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.major.label_tag }}
+              {{ form.major }}
+              {% if form.major.errors %}
+                <div class="text-danger small">{{ form.major.errors|striptags }}</div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
               {{ form.email.label_tag }}
               {{ form.email }}
               {% if form.email.errors %}

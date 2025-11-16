@@ -21,9 +21,7 @@
           </svg>
           <span class="fw-bold text-dark">MNTR</span>
         </a>
-        <button id="sidebarToggle" class="btn btn-outline-secondary d-none d-md-inline-block me-2" type="button" aria-label="Toggle sidebar" title="Toggle sidebar">
-          ☰
-        </button>
+       
         <button class="btn btn-outline-secondary d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
           ☰
         </button>
@@ -34,15 +32,22 @@
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto align-items-center">
             {% if user.is_authenticated %}
-              <li class="nav-item me-2"><a class="nav-link" href="#">Hi {{ user.username }}</a></li>
-              {% if user.is_superuser %}
-                <li class="nav-item me-2"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-              {% endif %}
-              <li class="nav-item">
-                <form method="post" action="{% url 'logout' %}" class="d-inline">
-                  {% csrf_token %}
-                  <button type="submit" class="btn btn-link nav-link p-0">Logout</button>
-                </form>
+              <li class="nav-item dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle me-2" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Hi {{ user.username }}</button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+                  <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  {% if user.is_superuser %}
+                    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a></li>
+                  {% endif %}
+                  <li><hr class="dropdown-divider"></li>
+                  <li class="px-3 py-2">
+                    <form method="post" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-link text-danger p-0">Logout</button>
+                    </form>
+                  </li>
+                </ul>
               </li>
             {% else %}
               <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
@@ -63,16 +68,17 @@
           <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#mobileClassesSub" role="button" aria-expanded="false" aria-controls="mobileClassesSub">Top classes</a>
+              <a class="nav-link" data-bs-toggle="collapse" href="#mobileClassesSub" role="button" aria-expanded="false" aria-controls="mobileClassesSub">All classes</a>
               <div class="collapse" id="mobileClassesSub">
                 <ul class="nav flex-column ms-3">
                   <li class="nav-item"><a class="nav-link" href="{% url 'top_class_detail' 'CS-150' %}">CS 150</a></li>
                 </ul>
               </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'top_mentors' %}">Top Mentors</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'top_mentors' %}">All mentors</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'ratings' %}">Ratings</a></li>
+            <!--<li class="nav-item"><a class="nav-link" href="{% url 'ratings' %}">Ratings</a></li>--> 
+            
             <li class="nav-item"><a class="nav-link" href="{% url 'appointments' %}">Appointments</a></li>
           </ul>
         </nav>
@@ -88,16 +94,13 @@
                 <a class="nav-link fw-bold d-flex align-items-center gap-2" href="{% url 'home' %}"><span class="sidebar-icon">🏠</span><span class="sidebar-text">Home</span></a>
               </li>
               <li class="nav-item mb-1">
-                <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#classesSub" role="button" aria-expanded="false" aria-controls="classesSub"><span class="sidebar-icon">📚</span><span class="sidebar-text">Top classes</span></a>
-                <div class="collapse" id="classesSub">
-                  <ul class="nav flex-column ms-3">
-                    <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'top_class_detail' 'CS-150' %}"><span class="sidebar-icon">CS</span><span class="sidebar-text">CS 150</span></a></li>
-                  </ul>
-                </div>
+                <a class="nav-link d-flex align-items-center gap-2" href="{% url 'top_classes' %}"><span class="sidebar-icon">📚</span><span class="sidebar-text">All classes</span></a>
+                
               </li>
-              <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'top_mentors' %}"><span class="sidebar-icon">👩‍🏫</span><span class="sidebar-text">Top Mentors</span></a></li>
+              <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'top_mentors' %}"><span class="sidebar-icon">👩‍🏫</span><span class="sidebar-text">All mentors</span></a></li>
               <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'leaderboard' %}"><span class="sidebar-icon">🏆</span><span class="sidebar-text">Leaderboard</span></a></li>
-              <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'ratings' %}"><span class="sidebar-icon">⭐</span><span class="sidebar-text">Ratings</span></a></li>
+              <!--<li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'ratings' %}"><span class="sidebar-icon">⭐</span><span class="sidebar-text">Ratings</span></a></li>-->
+
               <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="{% url 'appointments' %}"><span class="sidebar-icon">📅</span><span class="sidebar-text">Appointments</span></a></li>
             </ul>
           </nav>

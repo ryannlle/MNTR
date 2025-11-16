@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="mt-4">
+    <h2>Profile</h2>
+    <p class="text-muted">Edit your profile information.</p>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Account</h5>
+          {{ user_form.non_field_errors }}
+          <div class="mb-3">{{ user_form.username.label_tag }}{{ user_form.username }}</div>
+          <div class="mb-3">{{ user_form.email.label_tag }}{{ user_form.email }}</div>
+          <div class="mb-3">{{ user_form.major.label_tag }}{{ user_form.major }}</div>
+          <div class="mb-3">{{ user_form.year.label_tag }}{{ user_form.year }}</div>
+        </div>
+        <div class="col-md-6">
+          <h5>Profile</h5>
+          <div class="mb-3">{{ profile_form.bio.label_tag }}{{ profile_form.bio }}</div>
+          <div class="mb-3">{{ profile_form.major.label_tag }}{{ profile_form.major }}</div>
+          <div class="mb-3">{{ profile_form.year.label_tag }}{{ profile_form.year }}</div>
+          <div class="mb-3">{{ profile_form.avatar.label_tag }}{{ profile_form.avatar }}</div>
+        </div>
+      </div>
+
+      {% if mentor_form %}
+        <hr>
+        <h5>Mentor settings</h5>
+        <div class="mb-3">{{ mentor_form.subjects.label_tag }}{{ mentor_form.subjects }}</div>
+        <div class="mb-3">
+          <label class="form-label">{{ mentor_form.class_codes.label }}</label>
+          <div class="row">
+            {% for checkbox in mentor_form.class_codes %}
+              <div class="col-12 col-md-6 mb-2">
+                <div class="form-check">
+                  {{ checkbox.tag }}
+                  <label class="form-check-label" for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

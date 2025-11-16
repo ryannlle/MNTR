@@ -11,7 +11,7 @@ class ProfileAdmin(admin.ModelAdmin):
 class MentorAdmin(admin.ModelAdmin):
     list_display = ('user', 'approved', 'rating')
     list_filter = ('approved',)
-    search_fields = ('user__username', 'subjects')
+    search_fields = ('user__username', 'subjects', 'major')
     actions = ['approve_mentors']
 
     def approve_mentors(self, request, queryset):
